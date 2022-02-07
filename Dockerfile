@@ -1,4 +1,4 @@
-## Starting from Ubuntu
+## Starting from Ubuntu (Version 20.04 when this was created)
 FROM ubuntu
 
 ## Create a Non-Root User
@@ -78,6 +78,21 @@ RUN . ~/.bashrc
 ## Install Ballerina
 RUN curl --output ballerina-2201.0.0-swan-lake-linux-x64.deb https://dist.ballerina.io/downloads/2201.0.0/ballerina-2201.0.0-swan-lake-linux-x64.deb
 RUN sudo dpkg -i ./ballerina-2201.0.0-swan-lake-linux-x64.deb
+
+## Install Raku (Perl 6 that is now a separate language) & Perl 5
+RUN sudo apt-get install rakudo perl -y
+
+## Install DotNet 6
+RUN wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN sudo dpkg -i packages-microsoft-prod.deb
+RUN rm packages-microsoft-prod.deb
+RUN sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-6.0
+
+## Install Nano + VIM for editing
+RUN sudo apt-get install nano vim -y
 
 ## Start Container
 ENTRYPOINT bash

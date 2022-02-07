@@ -16,6 +16,10 @@ The `Dockerfile` and `docker-compose.yml` are meant to help create an easy to re
 - Go
 - Rust
 - Ballerina (`bal version`)
+- Perl 5
+- Raku (Rakudo Compiler, Raku is a spinoff langauge from Perl 6, `rakudo --version`)
+- DotNet 6
+- nano/vim
 
 *Docker Compose file will also include*
 - postgres database being serves on port 5432
